@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useMarkdown } from '@/hooks/useMarkdown';
+import Markdown from '@/components/Markdown';
 import {
   Card,
   Box,
@@ -33,8 +35,8 @@ const OpenApi = () => {
     refetch
   } = useQuery(['getOpenApiKeys'], getOpenApiKeys);
   const [apiKey, setApiKey] = useState('');
+  const [showModal, setShowModal] = useState(false); // 添加状态变量
   const { copyData } = useCopyData();
-
   const { mutate: onclickCreateApiKey, isLoading: isCreating } = useMutation({
     mutationFn: () => createAOpenApiKey(),
     onSuccess(res) {
@@ -42,35 +44,53 @@ const OpenApi = () => {
       refetch();
     }
   });
-
   const { mutate: onclickRemove, isLoading: isDeleting } = useMutation({
     mutationFn: async (id: string) => delOpenApiById(id),
     onSuccess() {
       refetch();
     }
   });
+  const { data: openai } = useMarkdown({ url: '/openai.md' });
+
+  // 添加函数来显示模态框
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
 
   return (
     <Box py={[5, 10]} px={'5vw'}>
       <Card px={6} py={4} position={'relative'}>
         <Box fontSize={'xl'} fontWeight={'bold'}>
-          FastGpt Api
+          MagicTool Api
         </Box>
         <Box fontSize={'sm'} mt={2}>
-          FastGpt Api 允许你将 Fast Gpt 的部分功能通过 api
+          MagicTool Api 允许你将 Fast Gpt 的部分功能通过 api
           的形式接入到自己的应用中，例如：飞书、企业微信、客服助手。请注意保管你的 Api
           Key，不要泄露！
         </Box>
+        {/* 生成一段代码，打开一个弹窗显示/docs/openai.md的内容，并且有有一个关闭按钮 */}
         <Box
           my={1}
           as="a"
-          href="https://kjqvjse66l.feishu.cn/docx/DmLedTWtUoNGX8xui9ocdUEjnNh"
           color={'myBlue.800'}
           textDecoration={'underline'}
           target={'_blank'}
+          onClick={handleShowModal}
         >
           点击查看文档
         </Box>
+        {/* 添加模态框 */}
+        <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+          <ModalOverlay />
+          <ModalContent width={'80%'} maxWidth={'80%'}>
+            <ModalHeader>OepnApi</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Markdown source={openai} />
+            </ModalBody>
+          </ModalContent>
+        </Modal>
+
         <TableContainer mt={2} position={'relative'}>
           <Table>
             <Thead>
@@ -92,6 +112,7 @@ const OpenApi = () => {
                       : '没有使用过'}
                   </Td>
                   <Td>
+                    {/* 删除按钮 */}
                     <IconButton
                       icon={<DeleteIcon />}
                       size={'xs'}
@@ -106,6 +127,8 @@ const OpenApi = () => {
             </Tbody>
           </Table>
         </TableContainer>
+
+        {/* 添加按钮 */}
         <Button
           maxW={'200px'}
           mt={5}
@@ -116,8 +139,11 @@ const OpenApi = () => {
         >
           添加新的 Api Key
         </Button>
+
         <Loading loading={isGetting || isDeleting} fixed={false} />
       </Card>
+
+      {/* 添加模态框 */}
       <Modal isOpen={!!apiKey} onClose={() => setApiKey('')}>
         <ModalOverlay />
         <ModalContent>
