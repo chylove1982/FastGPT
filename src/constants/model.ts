@@ -44,7 +44,7 @@ export const ChatModelMap = {
   },
   [OpenAiChatEnum.GPT432k]: {
     chatModel: OpenAiChatEnum.GPT432k,
-    name: 'Gpt4-32k',
+    name: 'Gpt432k',
     contextMaxToken: 32000,
     systemMaxToken: 3000,
     maxTemperature: 1.2,
@@ -52,11 +52,11 @@ export const ChatModelMap = {
   },
   [ClaudeEnum.Claude]: {
     chatModel: ClaudeEnum.Claude,
-    name: 'Claude(免费体验)',
+    name: 'Claude',
     contextMaxToken: 9000,
     systemMaxToken: 2400,
     maxTemperature: 1,
-    price: 0
+    price: 3
   }
 };
 
