@@ -159,13 +159,13 @@ const Home = () => {
           letterSpacing={'5px'}
           color={'myBlue.600'}
         >
-          FastGpt
+          MagicTool.chat
         </Box>
         <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
-          三分钟
+          分享自己的提示词，无需魔法
         </Box>
         <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
-          搭建 AI 知识库
+          搭建自己的知识库
         </Box>
 
         <Button
@@ -191,7 +191,7 @@ const Home = () => {
             </Link>
           )}
 
-          <Box>Made by FastGpt Team.</Box>
+          <Box>Made by MagicTool Team.</Box>
         </Card>
       </Box>
     </Flex>

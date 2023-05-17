@@ -66,7 +66,7 @@ http {
     }
     server {
         listen 80;
-        server_name ai.fastgpt.run;
+        server_name ai.{url};
         rewrite ^(.*) https://$server_name$1 permanent;
     }
 }

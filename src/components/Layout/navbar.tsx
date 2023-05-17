@@ -125,7 +125,7 @@ const Navbar = () => {
           </Tooltip>
         ))}
       </Box>
-      <Box>
+      {/* <Box>
         <Flex
           mb={3}
           flexDirection={'column'}
@@ -142,7 +142,7 @@ const Navbar = () => {
         >
           <MyIcon name={'git'} width={'22px'} height={'22px'} />
         </Flex>
-      </Box>
+      </Box> */}
     </Flex>
   );
 };

@@ -34,14 +34,16 @@ run: ## Run a dev service from host.
 
 .PHONY: docker-build
 docker-build: ## Build docker image with the desktop-frontend.
-	docker build -t registry.cn-hangzhou.aliyuncs.com/fastgpt/fastgpt:latest . --network host  --build-arg HTTP_PROXY=http://127.0.0.1:7890 --build-arg HTTPS_PROXY=http://127.0.0.1:7890
+	docker build -t registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest . --network host 
 
 ##@ Deployment
 
 .PHONY: docker-run
 docker-run:  ## Push docker image.
-	docker run -d -p 8008:3000 --name fastgpt -v /web_project/yjl/fastgpt/logs:/app/.next/logs registry.cn-hangzhou.aliyuncs.com/fastgpt/fastgpt:latest
+	docker run -d -p 8008:3000 --name fastgpt registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest 
 
 #TODO: add support of docker push
-
+.PHONY: docker-push
+docker-push:  ## Push docker image.
+	docker push  registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest
 #TODO: add support of sealos apply

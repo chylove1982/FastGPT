@@ -1,5 +1,7 @@
 # Install dependencies only when needed
-FROM node:current-alpine AS deps
+ 
+FROM --platform=linux/amd64 node:current-alpine AS deps
+
 # Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
 RUN apk add --no-cache libc6-compat && npm install -g pnpm
 WORKDIR /app
@@ -9,9 +11,9 @@ COPY package.json pnpm-lock.yaml* ./
 RUN \
   [ -f pnpm-lock.yaml ] && pnpm install || \
   (echo "Lockfile not found." && exit 1)
-
+ 
 # Rebuild the source code only when needed
-FROM node:current-alpine AS builder
+FROM --platform=linux/amd64 node:current-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -24,7 +26,7 @@ ENV NEXT_TELEMETRY_DISABLED 1
 RUN npm install -g pnpm && pnpm run build
 
 # Production image, copy all the files and run next
-FROM node:current-alpine AS runner
+FROM --platform=linux/amd64 node:current-alpine AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
