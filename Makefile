@@ -1,4 +1,4 @@
-SERVICE_NAME=fastgpt
+SERVICE_NAME=magictool
 # Image URL to use all building/pushing image targets
 IMG ?= $(SERVICE_NAME):latest
 
@@ -34,16 +34,16 @@ run: ## Run a dev service from host.
 
 .PHONY: docker-build
 docker-build: ## Build docker image with the desktop-frontend.
-	docker build -t registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest . --network host 
+	docker build -t registry.cn-shenzhen.aliyuncs.com/gpthor/magictool:latest . --network host 
 
 ##@ Deployment
 
 .PHONY: docker-run
 docker-run:  ## Push docker image.
-	docker run -d -p 8008:3000 --name fastgpt registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest 
+	docker run -d -p 8008:3000 --name magictool registry.cn-shenzhen.aliyuncs.com/gpthor/magictool:latest 
 
 #TODO: add support of docker push
 .PHONY: docker-push
 docker-push:  ## Push docker image.
-	docker push  registry.cn-shenzhen.aliyuncs.com/gpthor/fastgpt:latest
+	docker push  registry.cn-shenzhen.aliyuncs.com/gpthor/magictool:latest
 #TODO: add support of sealos apply
