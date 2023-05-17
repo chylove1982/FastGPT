@@ -13,6 +13,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (process.env.GPT4KEY) {
     chatModelList.push(ChatModelMap[OpenAiChatEnum.GPT4]);
   }
+  if (process.env.GPT4KEY32K) {
+    chatModelList.push(ChatModelMap[OpenAiChatEnum.GPT432k]);
+  }
   if (process.env.CLAUDE_KEY) {
     chatModelList.push(ChatModelMap[ClaudeEnum.Claude]);
   }

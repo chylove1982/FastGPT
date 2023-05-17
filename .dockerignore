@@ -5,7 +5,7 @@ npm-debug.log
 README.md
 .next
 .git
-
+.env
 .yalc/
 yalc.lock
 testApi/
