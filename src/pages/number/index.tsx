@@ -136,13 +136,11 @@ const NumberSetting = () => {
               充值
             </Button>
           </Flex>
-          {/* 屏蔽自己填写apikey的地方 */}
-          {/* <Box fontSize={'xs'} color={'blackAlpha.500'}>
+          <Box fontSize={'xs'} color={'blackAlpha.500'}>
             如果填写了自己的 openai 账号，将不会计费
-          </Box> */}
+          </Box>
         </Box>
-        {/* 屏蔽这个自己填写apikey的实现 */}
-        {/* <Flex mt={6} alignItems={'center'}>
+        <Flex mt={6} alignItems={'center'}>
           <Box flex={'0 0 85px'}>openaiKey:</Box>
           <Input
             {...register(`openaiKey`)}
@@ -156,7 +154,7 @@ const NumberSetting = () => {
               }
             }}
           ></Input>
-        </Flex> */}
+        </Flex>
       </Card>
 
       <File onSelect={onSelectFile} />

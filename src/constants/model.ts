@@ -1,6 +1,6 @@
 import { getSystemModelList } from '@/api/system';
-import type { ModelSchema } from '@/types/mongoSchema';
 import type { ShareChatEditType } from '@/types/model';
+import type { ModelSchema } from '@/types/mongoSchema';
 
 export const embeddingModel = 'text-embedding-ada-002';
 export type EmbeddingModelType = 'text-embedding-ada-002';
@@ -48,15 +48,15 @@ export const ChatModelMap = {
     contextMaxToken: 32000,
     systemMaxToken: 3000,
     maxTemperature: 1.2,
-    price: 50
+    price: 90
   },
   [ClaudeEnum.Claude]: {
     chatModel: ClaudeEnum.Claude,
-    name: 'Claude',
+    name: 'Claude(免费体验)',
     contextMaxToken: 9000,
     systemMaxToken: 2400,
     maxTemperature: 1,
-    price: 3
+    price: 0
   }
 };
 
@@ -142,7 +142,7 @@ export const defaultModel: ModelSchema = {
   status: ModelStatusEnum.pending,
   updateTime: Date.now(),
   chat: {
-    useKb: false,
+    relatedKbs: [],
     searchMode: ModelVectorSearchModeEnum.hightSimilarity,
     systemPrompt: '',
     temperature: 0,
@@ -153,13 +153,6 @@ export const defaultModel: ModelSchema = {
     isShareDetail: false,
     intro: '',
     collection: 0
-  },
-  security: {
-    domain: ['*'],
-    contextMaxLen: 1,
-    contentMaxLen: 1,
-    expiredTime: 9999,
-    maxLoadAmount: 1
   }
 };
 

@@ -22,12 +22,17 @@ const Navbar = () => {
         link: `/chat?modelId=${lastChatModelId}&chatId=${lastChatId}`,
         activeLink: ['/chat']
       },
-
       {
         label: 'AI助手',
         icon: 'model',
         link: `/model?modelId=${lastModelId}`,
         activeLink: ['/model']
+      },
+      {
+        label: '知识库',
+        icon: 'kb',
+        link: `/kb`,
+        activeLink: ['/kb']
       },
       {
         label: '共享',
@@ -124,6 +129,24 @@ const Navbar = () => {
             </Flex>
           </Tooltip>
         ))}
+      </Box>
+      <Box>
+        <Flex
+          mb={3}
+          flexDirection={'column'}
+          alignItems={'center'}
+          justifyContent={'center'}
+          cursor={'pointer'}
+          w={'60px'}
+          h={'45px'}
+          color={'#9096a5'}
+          _hover={{
+            color: '#ffffff'
+          }}
+          onClick={() => window.open('https://github.com/c121914yu/FastGPT')}
+        >
+          <MyIcon name={'git'} width={'22px'} height={'22px'} />
+        </Flex>
       </Box>
     </Flex>
   );

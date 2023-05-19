@@ -18,12 +18,12 @@ const WxConcat = ({ onClose }: { onClose: () => void }) => {
     <Modal isOpen={true} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>wx交流</ModalHeader>
+        <ModalHeader>wx交流群</ModalHeader>
         <ModalCloseButton />
         <ModalBody textAlign={'center'}>
           <Image
             style={{ margin: 'auto' }}
-            src={'/imgs/Wechatchy.jpeg'}
+            src={'https://otnvvf-imgs.oss.laf.run/wx300.png'}
             width={'200px'}
             height={'200px'}
             alt=""
@@ -31,7 +31,7 @@ const WxConcat = ({ onClose }: { onClose: () => void }) => {
           <Box mt={2}>
             微信号:
             <Box as={'span'} userSelect={'all'}>
-              rpgprg
+              fastgpt123
             </Box>
           </Box>
         </ModalBody>
