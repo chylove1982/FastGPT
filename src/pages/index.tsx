@@ -6,6 +6,7 @@ import { getFilling } from '@/api/system';
 import { useQuery } from '@tanstack/react-query';
 import { useScreen } from '@/hooks/useScreen';
 import { useRouter } from 'next/router';
+import { useGlobalStore } from '@/store/global';
 
 import styles from './index.module.scss';
 
@@ -13,7 +14,7 @@ const Home = () => {
   const router = useRouter();
   const { inviterId } = router.query as { inviterId: string };
   const { data } = useMarkdown({ url: '/intro.md' });
-  const { isPc } = useScreen();
+  const { isPc } = useGlobalStore();
 
   useEffect(() => {
     if (inviterId) {
@@ -159,13 +160,13 @@ const Home = () => {
           letterSpacing={'5px'}
           color={'myBlue.600'}
         >
-          MagicTool.chat
+          FastGpt
         </Box>
         <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
-          分享自己的提示词，无需魔法
+          三分钟
         </Box>
         <Box color={'myBlue.600'} fontSize={['30px', '50px']}>
-          搭建自己的知识库
+          搭建 AI 知识库
         </Box>
 
         <Button
@@ -191,7 +192,7 @@ const Home = () => {
             </Link>
           )}
 
-          <Box>Made by MagicTool Team.</Box>
+          <Box>Made by FastGpt Team.</Box>
         </Card>
       </Box>
     </Flex>
