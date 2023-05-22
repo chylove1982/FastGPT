@@ -1,0 +1,33 @@
+version: '3.3'
+services:
+  pg:
+    image: ankane/pgvector:v0.4.1
+    container_name: pg
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      # 这里的配置只有首次运行生效。修改后，重启镜像是不会生效的。需要把持久化数据删除再重启，才有效果
+      - POSTGRES_USER=fastgpt
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_DB=fastgpt
+
+  mongodb:
+    image: mongo:6.0.4
+    container_name: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    environment:
+      # 这里的配置只有首次运行生效。修改后，重启镜像是不会生效的。需要把持久化数据删除再重启，才有效果
+      - MONGO_INITDB_ROOT_USERNAME=username
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=fastgpt
+  mysql:
+    image: arm64v8/mysql
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+ 
