@@ -9,8 +9,14 @@ import { useUserStore } from '@/store/user';
 import { useChatStore } from '@/store/chat';
 import LoginForm from './components/LoginForm';
 import dynamic from 'next/dynamic';
+import { postLogin, postRegister } from '@/api/user';
+import { User } from '@/service/models/user';
+import { useToast } from '@/hooks/useToast';
 const RegisterForm = dynamic(() => import('./components/RegisterForm'));
 const ForgetPasswordForm = dynamic(() => import('./components/ForgetPasswordForm'));
+
+
+
 
 const Login = () => {
   const router = useRouter();
@@ -74,7 +80,7 @@ const Login = () => {
         height="100%"
         w={'100%'}
         maxW={'1240px'}
-        maxH={['auto', 'max(660px,80vh)']}
+        maxH={['auto', 'max(660px,70vh)']}
         backgroundColor={'#fff'}
         alignItems={'center'}
         justifyContent={'center'}
@@ -104,6 +110,7 @@ const Login = () => {
           borderColor="gray.200"
           py={5}
           px={10}
+          pt={10}
           borderRadius={isPc ? 'md' : 'none'}
         >
           <DynamicComponent type={pageType} />

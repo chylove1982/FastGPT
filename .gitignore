@@ -39,3 +39,4 @@ platform.json
 testApi/
 .env
 docs/deploy/fastgpt/*
+.idea/

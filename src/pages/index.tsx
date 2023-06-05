@@ -10,8 +10,11 @@ import { useGlobalStore } from '@/store/global';
 
 import styles from './index.module.scss';
 
+
 const Home = () => {
   const router = useRouter();
+  const { loginType = '' } = router.query as { loginType: string };
+  const { loginCode = '' } = router.query as { loginCode: string };
   const { inviterId } = router.query as { inviterId: string };
   const { data } = useMarkdown({ url: '/intro.md' });
   const { isPc } = useGlobalStore();
@@ -174,7 +177,7 @@ const Home = () => {
           fontSize={['xl', '3xl']}
           h={'auto'}
           py={[2, 3]}
-          onClick={() => router.push(`/model`)}
+          onClick={() => router.push(`/login?loginType=${loginType || ''}&loginCode=${loginCode || ''}`)}
         >
           点击开始
         </Button>
